@@ -1,4 +1,9 @@
 class PostsController < ApplicationController
+  before_action :authenticate!, except: [:index, :show]
+
+def index
+  @posts = Post.all
+end
 
 def show
   @post = Post.find(params[:id])
@@ -9,7 +14,7 @@ def new
 end
 
 def create
-    @post = Post.new(post_params)
+    @post = current_user.posts.build(post_params)
   if @post.save
     redirect_to post_path(@post)
   else
@@ -30,8 +35,8 @@ end
 private
 
 def post_params
-  require.(:post).permit(:title, :location, :content, :date, :user_id, :category_id)
+  params.require(:post).permit(:title, :location, :content, :date, :user_id, :category_id)
 end
 
-  
+
 end
