@@ -3,13 +3,13 @@ Rails.application.routes.draw do
   post '/login', to: 'sessions#create'
   delete '/logout', to: 'sessions#destroy'
 
-  resources :likes
   resources :categories
   resources :users
   resources :posts do
     resources :comments
+      resources :likes
   end
-  
+
   resources :sessions, only: [:new, :create]
 
   # root 'sessions#new'
