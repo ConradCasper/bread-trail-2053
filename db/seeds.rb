@@ -11,3 +11,19 @@ Category.destroy_all
 Post.destroy_all
 User.destroy_all
 
+
+
+10.times do (
+    User.create(name: Faker::Artist.name, username: Faker::Hipster.word, password: 'hello')
+)
+end
+
+10.times do (
+    Category.create(name: ["horror", "comedy", "drama", "realistic"].sample)
+)
+end 
+
+20.times do (
+    Post.create(title: 'hello', location: 'hello', content: 'hello', date: 'hello', user: User.all.sample, category: Category.all.sample)
+)
+end

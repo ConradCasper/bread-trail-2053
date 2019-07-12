@@ -33,4 +33,5 @@ def post_params
   require.(:post).permit(:title, :location, :content, :date, :user_id, :category_id)
 end
 
+  
 end
