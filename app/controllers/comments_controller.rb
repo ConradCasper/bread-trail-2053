@@ -11,8 +11,16 @@ class CommentsController < ApplicationController
   end
 
   def destroy
-    @post = Post.find(params[:id])
+    @post = Post.find(params[:post_id])
     @comment = @post.comments.find(params[:id])
-    @comment.destroy
-    redirect_to post_path(@post)
+    if @comment.user == current_user
+      @comment.destroy
+        redirect_to post_path(@post)
+    else flash[:info] = "You're not allowed to delete other user's comments."
+    end
+  end
+
+
+
+
 end
