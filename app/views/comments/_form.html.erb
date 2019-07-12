@@ -1,6 +1,5 @@
 <%= form_for([@post,@post.comments.build]) do |f| %>
 <p>
-  <%= #{@user.name} %>
 </p>
 <p>
   <%= f.label :content %><br>
@@ -10,4 +9,4 @@
 <p>
   <%= f.submit %><br>
 </p>
-<%= end %>
+<% end %>

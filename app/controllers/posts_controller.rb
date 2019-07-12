@@ -32,6 +32,11 @@ def update
   redirect_to post_path(@post)
 end
 
+def delete
+  @post = Post.find(params[:id]).destroy
+  redirect_to posts_path
+end
+
 private
 
 def post_params

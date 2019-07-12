@@ -2,12 +2,14 @@ Rails.application.routes.draw do
   get '/login', to: 'sessions#new'
   post '/login', to: 'sessions#create'
   delete '/logout', to: 'sessions#destroy'
-  
+
   resources :likes
-  resources :comments
   resources :categories
   resources :users
-  resources :posts
+  resources :posts do
+    resources :comments
+  end
+  
   resources :sessions, only: [:new, :create]
 
   # root 'sessions#new'
