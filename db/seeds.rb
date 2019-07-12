@@ -14,16 +14,16 @@ User.destroy_all
 
 
 10.times do (
-    User.create(name: Faker::Artist.name, username: Faker::Hipster.word, password: 'hello')
+    User.create(name: Faker::Artist.name, username: Faker::Games::Fallout.character, password: 'hello')
 )
 end
 
-10.times do (
-    Category.create(name: ["horror", "comedy", "drama", "realistic"].sample)
+6.times do (
+    Category.create(name: ["Food", "Clothes", "Weapons", "Medical", "Housing", "Insights"].sample)
 )
-end 
+end
 
 20.times do (
-    Post.create(title: 'hello', location: 'hello', content: 'hello', date: 'hello', user: User.all.sample, category: Category.all.sample)
+    Post.create(title: Faker::Hipster.word, location: Faker::Games::Fallout.location, content: Faker::TvShows::TwinPeaks.quote, date: Faker::Date.between(45.days.ago, Date.today), user: User.all.sample, category: Category.all.sample)
 )
 end

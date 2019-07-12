@@ -10,7 +10,7 @@ class SessionsController < ApplicationController
         if @user && @user.authenticate(params[:password])
             session[:user_id] = @user.id
             flash[:info] = "Login Successful!"
-            redirect_to user_path(@user)
+            redirect_to posts_path
 
         else
             @error = "No such username or password."
@@ -21,7 +21,7 @@ class SessionsController < ApplicationController
 
     def destroy
         session[:user_id] = nil
-        redirect_to users_path
+        redirect_to posts_path
     end
 
 end
